@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import useStore from '@/store'
+import { useFullscreen } from '@vueuse/core'
 import localforage from 'localforage'
 import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
@@ -9,6 +10,7 @@ import { useRoute, useRouter } from 'vue-router'
 const { t } = useI18n()
 const router = useRouter()
 const route = useRoute()
+const { isFullscreen, toggle } = useFullscreen()
 const audioDbStore = localforage.createInstance({
   name: 'audioStore',
 })
@@ -104,7 +106,15 @@ watch(currentMusic, (val: any) => {
         <svg-icon name="home" />
       </div>
     </div>
-    <div v-else class="tooltip tooltip-left" :data-tip="t('tooltip.settingConfiguration')">
+    <div v-if="!route.path.includes('/config')" class="tooltip tooltip-left" :data-tip="isFullscreen ? t('tooltip.exitFullScreen') : t('tooltip.fullScreen')">
+      <div
+        class="flex items-center justify-center w-10 h-10 p-0 m-0 cursor-pointer setting-container bg-slate-500/50 rounded-l-xl hover:bg-slate-500/80 hover:text-blue-400/90"
+        @click="toggle"
+      >
+        <svg-icon :name="isFullscreen ? 'off-screen' : 'full-screen'" />
+      </div>
+    </div>
+    <div v-if="!route.path.includes('/config')" class="tooltip tooltip-left" :data-tip="t('tooltip.settingConfiguration')">
       <div
         class="flex items-center justify-center w-10 h-10 p-0 m-0 cursor-pointer setting-container bg-slate-500/50 rounded-l-xl hover:bg-slate-500/80 hover:text-blue-400/90"
         @click="enterConfig"

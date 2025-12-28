@@ -109,6 +109,8 @@ export default {
     doneCount: '已抽取',
     edit: '编辑',
     delete: '删除',
+    fullScreen: '全屏',
+    exitFullScreen: '退出全屏',
   },
   error: {
     require: '必填项',
@@ -141,6 +143,7 @@ export default {
     prizeTime: '获奖时间',
     operation: '操作',
     delete: '删除',
+    phoneNumber: '手机号',
     removePerson: '移入未中奖名单',
     defaultTitle: '大明内阁六部御前奏对',
     xlsxName: '人口登记表-zhCn.xlsx',

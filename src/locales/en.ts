@@ -109,6 +109,8 @@ export default {
     doneCount: 'Number of winners',
     edit: 'Edit',
     delete: 'Delete',
+    fullScreen: 'Full Screen',
+    exitFullScreen: 'Exit Full Screen',
   },
   error: {
     require: 'required field',
@@ -141,6 +143,7 @@ export default {
     prizeTime: 'Prize Time',
     operation: 'Operation',
     delete: 'Delete',
+    phoneNumber: 'Phone Number',
     removePerson: 'Remove the Person',
     defaultTitle: 'The Prelude to the Six Ministries of the Ming Dynasty Cabinet',
     xlsxName: 'personListTemplate-en.xlsx',

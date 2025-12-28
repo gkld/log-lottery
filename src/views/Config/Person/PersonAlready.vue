@@ -51,6 +51,10 @@ const tableColumnsList = [
     props: 'identity',
   },
   {
+    label: i18n.global.t('data.phoneNumber'),
+    props: 'phoneNumber',
+  },
+  {
     label: i18n.global.t('data.prizeName'),
     props: 'prizeName',
     sort: true,
@@ -92,6 +96,10 @@ const tableColumnsDetail = [
   {
     label: i18n.global.t('data.identity'),
     props: 'identity',
+  },
+  {
+    label: i18n.global.t('data.phoneNumber'),
+    props: 'phoneNumber',
   },
   {
     label: i18n.global.t('data.prizeName'),

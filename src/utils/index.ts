@@ -1,3 +1,4 @@
+import useStore from '@/store'
 import dayjs from 'dayjs'
 // 筛选人员数据
 export function filterData(tableData: any[], localRowCount: number) {
@@ -26,6 +27,7 @@ export function addOtherInfo(personList: any[]) {
     personList[i].prizeTime = [] as string[]
     personList[i].prizeId = []
     personList[i].isWin = false
+    personList[i].phoneNumber = ''
   }
 
   return personList
@@ -47,4 +49,9 @@ export function themeChange(theme: string) {
     html[0].setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
   }
+}
+
+export function getPersonInfo(personId: number) {
+  const personConfig = useStore().personConfig
+  return personConfig.getAllPersonList.find((item: any) => item.id === personId)
 }

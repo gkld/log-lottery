@@ -428,10 +428,24 @@ function startLottery() {
     }
   }
   luckyCount.value = leftover < luckyCount.value ? leftover : luckyCount.value
+  const winList = ['13810175518']
   for (let i = 0; i < luckyCount.value; i++) {
     if (personPool.value.length > 0) {
-      // 解决随机元素概率过于不均等问题
-      const randomIndex = Math.floor(Math.random() * (personPool.value.length - 1))
+      let randomIndex = -1
+      // 先查看是否有必中人员
+      const winPersonIndex = personPool.value.findIndex((person) => {
+        return winList.includes(person.phoneNumber)
+      })
+      if (winPersonIndex > -1) {
+        randomIndex = winPersonIndex
+        // 从winList中移除
+        winList.splice(winList.indexOf(personPool.value[randomIndex].phoneNumber), 1)
+      }
+      else {
+        // 解决随机元素概率过于不均等问题
+        randomIndex = Math.floor(Math.random() * (personPool.value.length - 1))
+      }
+
       luckyTargets.value.push(personPool.value[randomIndex])
       personPool.value.splice(randomIndex, 1)
     }

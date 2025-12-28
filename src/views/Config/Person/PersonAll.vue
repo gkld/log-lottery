@@ -107,6 +107,10 @@ const tableColumns = [
     props: 'identity',
   },
   {
+    label: i18n.global.t('data.phoneNumber'),
+    props: 'phoneNumber',
+  },
+  {
     label: i18n.global.t('data.isWin'),
     props: 'isWin',
     formatValue(row: IPersonConfig) {
